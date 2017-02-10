@@ -21,7 +21,7 @@ export class UserService {
           return this.http.post(this.loginUrl,body,options)
                           .map((res:Response)=>{
                             console.log(res.json());
-                            this.router.navigate(['/home']);
+                            this.router.navigate(['/user']);
                           })
                           .catch((error:any)=> Observable.throw(error.json().error || 'Server error'))
   }
@@ -41,4 +41,27 @@ export class UserService {
                     .map((res:Response)=>res.json())
                     .catch((error:any)=> Observable.throw(error.json().error || 'Server error'));
     }
+  _editUser(body:User):Observable<User>{
+    let bodyString=JSON.stringify(body);
+    let headers   = new Headers({ 'Content-Type': 'application/json' },
+                                // {  'auth-token': '$body.token' }
+                                                                    );
+    let options   = new RequestOptions({ headers: headers });
+    return this.http.put(this.SignupUrl,body,options)
+                    .map((res:Response)=>{
+                      console.log(res.json());
+                      this.router.navigate(['/user']);
+                    })
+                    .catch((error:any)=> Observable.throw(error.json().error || 'Server error'));
+  }
+  _logout(body:User){
+    let headers   = new Headers({ 'Content-Type': 'application/json' },
+                                // {  'auth-token': body.token }
+                                                                    );
+    let options   = new RequestOptions({ headers: headers });
+    return this.http.get(this.SignupUrl,options)
+                    .map((res:Response)=>{console.log(res.json());
+                                          (this.router.navigate(['/login']))});
+
+  }
 }

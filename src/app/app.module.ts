@@ -10,10 +10,13 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './container/login/login.component';
 import { SignupComponent } from './container/signup/signup.component';
 import { HomeComponent } from './container/home/home.component';
+import { EditUserComponent } from './container/edit-user/edit-user.component';
 
 import {routing,
         appRoutingProviders} from './app.routing';
 import { UserService}        from './services/user/user.service';
+import { HomeService}        from './services/home/home.service';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { UserService}        from './services/user/user.service';
     FooterComponent,
     LoginComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +35,7 @@ import { UserService}        from './services/user/user.service';
     HttpModule,
     routing
   ],
-  providers: [appRoutingProviders, UserService],
+  providers: [appRoutingProviders, UserService,HomeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

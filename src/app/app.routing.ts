@@ -9,7 +9,7 @@ const appRoutes: Routes=[
   {path: '', redirectTo:'/login', pathMatch:'full'},
   {path: 'login',  component: LoginComponent},
   {path: 'signup', component: SignupComponent},
-  {path: 'home',   component: HomeComponent}
+  {path: 'user',   component: HomeComponent}
 ];
 
 export const appRoutingProviders: any[]=[];
